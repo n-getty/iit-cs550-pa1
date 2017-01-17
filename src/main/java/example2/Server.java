@@ -46,8 +46,8 @@ public class Server implements Hello {
 
     public Server() {}
 
-    public String sayHello() {
-	return "Hello, world!";
+    public String sayHello(String name) {
+	return "Hello, world:".concat(name).concat("!");
     }
 
     public static void main(String args[]) {
