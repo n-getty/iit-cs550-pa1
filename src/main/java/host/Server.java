@@ -1,25 +1,40 @@
 package main.java.host;
+import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.List;
+import java.util.Map;
+import static java.util.Arrays.asList;
 
-public class Server implements Hello {
+public class Server implements IndexInt {
+
+	Map<String, List<Integer>> peerMap;
 
     public Server() {}
 
-    public String sayHello(String name) {
-	return "Hello, world:".concat(name).concat("!");
-    }
+	public void register(int peerId, String fileName){
+		if(peerMap.containsValue(fileName)){
+			peerMap.get(fileName).add(peerId);
+		}
+		else{
+			peerMap.put(fileName, asList(peerId));
+		}
+	}
+
+	public List<Integer> lookup(String fileName) {
+		return peerMap.get(fileName);
+	}
 
     public static void main(String args[]) {
 
 	try {
 	    Server obj = new Server();
-	    Hello stub = (Hello) UnicastRemoteObject.exportObject(obj, 0);
+		IndexInt stub = (IndexInt) UnicastRemoteObject.exportObject(obj, 0);
 
 	    // Bind the remote object's stub in the registry
 	    Registry registry = LocateRegistry.getRegistry();
-	    registry.bind("Hello", stub);
+	    registry.bind("PeerInt", stub);
 
 	    System.err.println("Server ready");
 	} catch (Exception e) {

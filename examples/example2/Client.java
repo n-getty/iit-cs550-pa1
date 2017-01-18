@@ -49,7 +49,7 @@ public class Client {
 	String host = (args.length < 1) ? null : args[0];
 	try {
 	    Registry registry = LocateRegistry.getRegistry(host);
-	    Hello stub = (Hello) registry.lookup("Hello");
+	    Hello stub = (Hello) registry.lookup("PeerInt");
 	    String response = stub.sayHello(name);
 	    System.out.println("response: " + response);
 	} catch (Exception e) {

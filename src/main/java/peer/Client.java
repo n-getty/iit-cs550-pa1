@@ -12,7 +12,7 @@ public class Client {
 	String host = (args.length < 1) ? null : args[0];
 	try {
 	    Registry registry = LocateRegistry.getRegistry(host);
-	    Hello stub = (Hello) registry.lookup("Hello");
+	    PeerInt stub = (PeerInt) registry.lookup("PeerInt");
 	    String response = stub.sayHello(name);
 	    System.out.println("response: " + response);
 	} catch (Exception e) {

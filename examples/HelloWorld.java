@@ -8,7 +8,7 @@ public class HelloWorld {
     }
 
     private void printHello(){
-        // Prints "Hello, World" to the terminal window.
-        System.out.println("Hello, World");
+        // Prints "PeerInt, World" to the terminal window.
+        System.out.println("PeerInt, World");
     }
 }

@@ -47,7 +47,7 @@ public class Server implements Hello {
     public Server() {}
 
     public String sayHello(String name) {
-	return "Hello, world:".concat(name).concat("!");
+	return "PeerInt, world:".concat(name).concat("!");
     }
 
     public static void main(String args[]) {
@@ -58,7 +58,7 @@ public class Server implements Hello {
 
 	    // Bind the remote object's stub in the registry
 	    Registry registry = LocateRegistry.getRegistry();
-	    registry.bind("Hello", stub);
+	    registry.bind("PeerInt", stub);
 
 	    System.err.println("Server ready");
 	} catch (Exception e) {
