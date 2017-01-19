@@ -9,10 +9,10 @@ import static java.util.Arrays.asList;
 
 public class Server implements IndexInt {
 
-	Map<String, List<Integer>> peerMap;
+	Map<String, List<String>> peerMap;
 
     public Server() {
-    	peerMap = new HashMap<String, List<Integer>>();
+    	peerMap = new HashMap<String, List<String>>();
 		try {
 			IndexInt stub = (IndexInt) UnicastRemoteObject.exportObject(this, 0);
 
@@ -27,7 +27,7 @@ public class Server implements IndexInt {
 		}
 	}
 
-	public void register(int peerId, String fileName){
+	public void register(String peerId, String fileName){
 		if(peerMap.containsValue(fileName)){
 			peerMap.get(fileName).add(peerId);
 		}
@@ -36,7 +36,7 @@ public class Server implements IndexInt {
 		}
 	}
 
-	public List<Integer> lookup(String fileName) {
+	public List<String> lookup(String fileName) {
 		return peerMap.get(fileName);
 	}
 }

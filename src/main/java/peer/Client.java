@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Client {
 	IndexInt indexStub;
-	int id;
+	String id;
 	List<String> fileList = new ArrayList<String>();
 
     private Client(String host) {
@@ -54,7 +54,7 @@ public class Client {
 		return targetIds;
 	}
 
-	public File retrieve(String fileName, int peerId){
+	public File retrieve(String fileName, String peerId){
 		File returnedFile = null;
 		try {
 			Registry registry = LocateRegistry.getRegistry(peerId);
