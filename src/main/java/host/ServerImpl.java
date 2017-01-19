@@ -7,11 +7,11 @@ import java.util.List;
 import java.util.Map;
 import static java.util.Arrays.asList;
 
-public class Server implements IndexInt {
+public class ServerImpl implements IndexInt {
 
 	Map<String, List<String>> peerMap;
 
-    public Server() {
+    public ServerImpl() {
     	peerMap = new HashMap<String, List<String>>();
 		try {
 			IndexInt stub = (IndexInt) UnicastRemoteObject.exportObject(this, 0);
@@ -20,9 +20,9 @@ public class Server implements IndexInt {
 			Registry registry = LocateRegistry.getRegistry();
 			registry.bind("PeerInt", stub);
 
-			System.err.println("Server ready");
+			System.err.println("ServerImpl ready");
 		} catch (Exception e) {
-			System.err.println("Server exception: " + e.toString());
+			System.err.println("ServerImpl exception: " + e.toString());
 			e.printStackTrace();
 		}
 	}

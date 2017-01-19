@@ -53,7 +53,7 @@ public class Client {
 	    String response = stub.sayHello(name);
 	    System.out.println("response: " + response);
 	} catch (Exception e) {
-	    System.err.println("Client exception: " + e.toString());
+	    System.err.println("ClientImpl exception: " + e.toString());
 	    e.printStackTrace();
 	}
     }

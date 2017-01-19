@@ -8,7 +8,7 @@ public class StartFileServer {
 	    FileServer fs = new FileServer();
 	    fs.setFile("itcrowd.avi");
 	    Naming.rebind("rmi://10.0.0.1/home/Research/cs550/iit-cs550-pa1", fs);
-	    System.out.println("File Server is Ready!");
+	    System.out.println("File ServerImpl is Ready!");
 	}catch(Exception e) {
 	    e.printStackTrace();
 	}

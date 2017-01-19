@@ -8,17 +8,17 @@ import java.rmi.registry.Registry;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Client {
+public class ClientImpl {
 	IndexInt indexStub;
 	String id;
 	List<String> fileList = new ArrayList<String>();
 
-    private Client(String host) {
+    public ClientImpl(String host) {
 		try {
 			Registry registry = LocateRegistry.getRegistry(host);
 			indexStub = (IndexInt) registry.lookup("IndexInt");
 		} catch (Exception e) {
-			System.err.println("Client exception: " + e.toString());
+			System.err.println("ClientImpl exception: " + e.toString());
 			e.printStackTrace();
 		}
 	}
@@ -28,7 +28,7 @@ public class Client {
 		try {
 			indexStub.register(id, fileName);
 		} catch (Exception e) {
-			System.err.println("Client exception: " + e.toString());
+			System.err.println("ClientImpl exception: " + e.toString());
 			e.printStackTrace();
 		}
 	}
@@ -38,7 +38,7 @@ public class Client {
 			for(String fileName : fileList)
 				indexStub.register(id, fileName);
 		} catch (Exception e) {
-			System.err.println("Client exception: " + e.toString());
+			System.err.println("ClientImpl exception: " + e.toString());
 			e.printStackTrace();
 		}
 	}
@@ -48,7 +48,7 @@ public class Client {
 		try {
 			targetIds = indexStub.lookup(fileName);
 		} catch (Exception e) {
-			System.err.println("Client exception: " + e.toString());
+			System.err.println("ClientImpl exception: " + e.toString());
 			e.printStackTrace();
 		}
 		return targetIds;
@@ -61,7 +61,7 @@ public class Client {
 			PeerInt peerStub = (PeerInt) registry.lookup("PeerInt");
 			returnedFile = peerStub.retrieve(fileName);
 		} catch (Exception e) {
-			System.err.println("Client exception: " + e.toString());
+			System.err.println("ClientImpl exception: " + e.toString());
 			e.printStackTrace();
 		}
 		return returnedFile;

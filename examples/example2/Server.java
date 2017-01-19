@@ -60,9 +60,9 @@ public class Server implements Hello {
 	    Registry registry = LocateRegistry.getRegistry();
 	    registry.bind("PeerInt", stub);
 
-	    System.err.println("Server ready");
+	    System.err.println("ServerImpl ready");
 	} catch (Exception e) {
-	    System.err.println("Server exception: " + e.toString());
+	    System.err.println("ServerImpl exception: " + e.toString());
 	    e.printStackTrace();
 	}
     }
