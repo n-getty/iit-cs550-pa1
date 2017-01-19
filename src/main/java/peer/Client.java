@@ -2,15 +2,13 @@ package main.java.peer;
 
 import main.java.host.IndexInt;
 
+import java.io.File;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class Client {
-	PeerInt peerStub;
 	IndexInt indexStub;
 	int id;
 	List<String> fileList = new ArrayList<String>();
@@ -18,7 +16,6 @@ public class Client {
     private Client(String host) {
 		try {
 			Registry registry = LocateRegistry.getRegistry(host);
-			//peerStub = (PeerInt) registry.lookup("PeerInt");
 			indexStub = (IndexInt) registry.lookup("IndexInt");
 		} catch (Exception e) {
 			System.err.println("Client exception: " + e.toString());
@@ -55,5 +52,18 @@ public class Client {
 			e.printStackTrace();
 		}
 		return targetIds;
+	}
+
+	public File retrieve(String fileName, int peerId){
+		File returnedFile = null;
+		try {
+			Registry registry = LocateRegistry.getRegistry(peerId);
+			PeerInt peerStub = (PeerInt) registry.lookup("PeerInt");
+			returnedFile = peerStub.retrieve(fileName);
+		} catch (Exception e) {
+			System.err.println("Client exception: " + e.toString());
+			e.printStackTrace();
+		}
+		return returnedFile;
 	}
 }
