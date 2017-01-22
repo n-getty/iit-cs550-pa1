@@ -1,0 +1,4 @@
+all:
+	javac -d . peer/PeerImpl.Java peer/ClientDriver.Java
+clean:
+	rm *~ *.class

@@ -20,9 +20,9 @@ public class ServerImpl implements IndexInt {
 			Registry registry = LocateRegistry.getRegistry();
 			registry.bind("PeerInt", stub);
 
-			System.err.println("ServerImpl ready");
+			System.err.println("PeerImpl ready");
 		} catch (Exception e) {
-			System.err.println("ServerImpl exception: " + e.toString());
+			System.err.println("PeerImpl exception: " + e.toString());
 			e.printStackTrace();
 		}
 	}
@@ -38,5 +38,9 @@ public class ServerImpl implements IndexInt {
 
 	public List<String> lookup(String fileName) {
 		return peerMap.get(fileName);
+	}
+
+	public static void main(String[] args) {
+		new ServerImpl();
 	}
 }
