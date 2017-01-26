@@ -1,11 +1,11 @@
 package main.java.peer;
 
-        import java.nio.file.*;
-        import static java.nio.file.StandardWatchEventKinds.*;
-        import static java.nio.file.LinkOption.*;
-        import java.nio.file.attribute.*;
-        import java.io.*;
-        import java.util.*;
+import java.nio.file.*;
+import static java.nio.file.StandardWatchEventKinds.*;
+import static java.nio.file.LinkOption.*;
+import java.nio.file.attribute.*;
+import java.io.*;
+import java.util.*;
 
 /**
  * Example to watch a directory (or tree) for changes to files.
@@ -48,14 +48,14 @@ public class WatchDir {
     private void registerAll(final Path start) throws IOException {
         // register directory and sub-directories
         Files.walkFileTree(start, new SimpleFileVisitor<Path>() {
-            @Override
-            public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs)
+                @Override
+                public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs)
                     throws IOException
-            {
-                register(dir);
-                return FileVisitResult.CONTINUE;
-            }
-        });
+                {
+                    register(dir);
+                    return FileVisitResult.CONTINUE;
+                }
+            });
     }
 
     /**

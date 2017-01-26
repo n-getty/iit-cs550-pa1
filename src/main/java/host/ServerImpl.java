@@ -54,7 +54,7 @@ public class ServerImpl implements IndexInt {
         // TODO exit and persistence ???
         System.out.println("INFO: Finished cleaning up\n");
         */
-        System.out.println("ALERT: exiting...");
+        System.out.println("\nALERT: Process exiting...\n Goodbye.");
         System.exit(0);
     }
 }
