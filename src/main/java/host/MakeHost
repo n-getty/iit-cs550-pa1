@@ -1,4 +1,0 @@
-all:
-	javac -d . host/ServerImpl.java
-clean:
-	rm *~ *.class
