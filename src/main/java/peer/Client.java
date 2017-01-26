@@ -17,6 +17,7 @@ public class Client {
     public Client(String host) {
 		registerAll();
 		try {
+			PeerImpl thisPeer = new PeerImpl();
 			Registry registry = LocateRegistry.getRegistry(host);
 			indexStub = (IndexInt) registry.lookup("IndexInt");
 			thisStub = (PeerInt) LocateRegistry.getRegistry(id).lookup("PeerInt");
