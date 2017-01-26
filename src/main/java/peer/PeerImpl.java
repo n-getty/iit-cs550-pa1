@@ -51,9 +51,4 @@ public class PeerImpl implements PeerInt {
 			e.printStackTrace();
 		}
 	}
-
-	public static void main(String[] args) {
-		new PeerImpl();
-	}
-
 }
