@@ -3,10 +3,10 @@ package main.java.peer;
 import java.util.List;
 import java.util.Scanner;
 
-public class ClientDriver {
+public class ClientDriver implements PeerInt {
 
     public static void main(String[] args) {
-
+	System.setProperty( "java.rmi.server.hostname", args[0] ) ;
         /*  create new client object
          *  args[0] is the unique ID of the client (i.e. the IP address)
          *  args[1] is the directory of the files to download to
@@ -17,16 +17,16 @@ public class ClientDriver {
         Client peerClient = new Client(args[0]);
         System.out.println("INFO: Client Process initialized...");
 
-        System.out.println("INFO: Registering Files in: " + folder);
+        System.out.println("INFO: Registering Files in: ./" + folder + "/");
         peerClient.getFilesToRegister(folder);
         peerClient.registerAll();
         System.out.println("INFO: Files Sucessfully Registered... ");
 
-
         Scanner input = new Scanner(System.in);
         System.out.println("Input 'exit' to close the application at anytime");
         String query;
-        while (true) {
+
+	while (true) {
             System.out.println("Input name of file you want to retrieve:");
             query = input.nextLine();
             if (query.equals("exit")){
@@ -36,9 +36,10 @@ public class ClientDriver {
             List<String> peers = peerClient.lookup(query);
             if (peers == null){
                 System.out.println("WARNING: No peers for that file\n\ttry a new filename");
-                break;
             }
-            peerClient.retrieve(query, peers.get(0));
-        }
+	    else {
+		peerClient.retrieve(query, peers.get(0));
+	    }
+	}
     }
 }
