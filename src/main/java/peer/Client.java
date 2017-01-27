@@ -56,7 +56,8 @@ public class Client {
         // the strings are the names
 
         files = Arrays.asList(listOfFiles);
-        for(int i=0;i<listOfFiles.length;i++) {
+        int i;
+	for(i=0;i<listOfFiles.length;i++) {
             fileList.add(listOfFiles[i].getName());
         }
     }

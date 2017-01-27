@@ -39,19 +39,7 @@ public class PeerImpl implements PeerInt {
         }
     }
 
-    public void sendData(String fileName, byte[] data, int len) {
-        try{
-            File file = new File(fileName);
-            file.createNewFile();
-            FileOutputStream out=new FileOutputStream(file,true);
-            out.write(data,0,len);
-            out.flush();
-            out.close();
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-    }
-
+    /*
     public static void main(String[] args) {
         new PeerImpl();
 
@@ -69,6 +57,7 @@ public class PeerImpl implements PeerInt {
             e.printStackTrace();
         }
     }
+    //*/
 
     public void sendData(String fileName, byte[] data, int len) {
         try{
