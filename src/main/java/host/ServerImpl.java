@@ -11,14 +11,18 @@ import java.util.Scanner;
 
 public class ServerImpl implements IndexInt {
 
+    // Maps file names to a list of peers that have that file
     Map<String, List<String>> peerMap;
 
+    /**
+     * Constructor for exporting remote object to rmi registry
+     */
     public ServerImpl() {
 	peerMap = new HashMap<String, List<String>>();
 
 	try {
+	        // Export this object
             IndexInt stub = (IndexInt) UnicastRemoteObject.exportObject(this, 0);
-
             // Bind the remote object's stub in the registry
             Registry registry = LocateRegistry.getRegistry();
             registry.rebind("IndexInt", stub);
@@ -31,6 +35,9 @@ public class ServerImpl implements IndexInt {
 
     }
 
+    /**
+     * Update the index map with the given peer id and the file they have
+     */
     public void register(String peerId, String fileName){
 	System.out.println("INFO: registering file: " + fileName + " to peer " + peerId);
 	if(peerMap.containsValue(fileName)){
@@ -41,10 +48,26 @@ public class ServerImpl implements IndexInt {
         }
     }
 
+    /**
+     * Update for when a peer removes a file from their directory
+     */
+    public void deregister(String peerId, String fileName){
+        System.out.println("INFO: deregistering file: " + fileName + " for peer " + peerId);
+        if(peerMap.containsValue(fileName)){
+            peerMap.get(fileName).remove(peerId);
+        }
+    }
+
+    /**
+     * Return the list of peers who have a particular file
+     */
     public List<String> lookup(String fileName) {
         return peerMap.get(fileName);
     }
 
+    /**
+     * Main method for starting the server
+     */
     public static void main (String[] args) {
 	
 	System.setProperty( "java.rmi.server.hostname", "10.0.0.1" ) ;

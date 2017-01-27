@@ -10,6 +10,9 @@ import java.rmi.server.UnicastRemoteObject;
 
 public class PeerImpl implements PeerInt {
 
+    /**
+     * Constructor for exporting each peer to the registry
+     */
     public PeerImpl() {
         try {
             PeerInt stub = (PeerInt) UnicastRemoteObject.exportObject(this, 0);
@@ -23,6 +26,9 @@ public class PeerImpl implements PeerInt {
         }
     }
 
+    /**
+     * Pass chunks of the file to the clients remote peer object until the file is written
+     */
     public void retrieve(String fileName, PeerInt client) {
         try {
             File requestedFile = new File(fileName);
@@ -59,6 +65,9 @@ public class PeerImpl implements PeerInt {
     }
     //*/
 
+    /**
+     * Write the file to disk using the clients peer object
+     */
     public void sendData(String fileName, byte[] data, int len) {
         try{
             File file = new File(fileName);
