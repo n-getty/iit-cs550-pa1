@@ -65,26 +65,6 @@ public class PeerImpl implements PeerInt {
 	*/
     }
 
-    /*
-    public static void main(String[] args) {
-        new PeerImpl();
-
-        try {
-            File requestedFile = new File(fileName);
-            FileInputStream in = new FileInputStream(requestedFile);
-            byte [] mydata = new byte[1024*1024];
-            int len = in.read(mydata);
-            while(len>0){
-                client.sendData(fileName, mydata, len);
-                len = in.read(mydata);
-            }
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
-    }
-    //*/
-
     /**
      * Write the file to disk using the clients peer object
      */

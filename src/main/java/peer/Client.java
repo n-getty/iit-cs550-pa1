@@ -40,15 +40,6 @@ public class Client {
         }
     }
 
-    public void register(String fileName){
-        fileList.add(fileName);
-        try {
-            indexStub.register(id, fileName);
-        } catch (Exception e) {
-            System.err.println("Client exception: " + e.toString());
-            e.printStackTrace();
-        }
-    }
 
     /**
      * Store all the file names of a given directory
@@ -85,6 +76,35 @@ public class Client {
             e.printStackTrace();
         }
     }
+    
+    /**
+     * Register file with just one file name with the indexing server
+     *   WatchDir calls this when a new file is downloaded / created 
+     */
+    public void register(String fileName){
+        fileList.add(fileName);
+        try {
+            indexStub.register(id, fileName);
+        } catch (Exception e) {
+            System.err.println("Client exception: " + e.toString());
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Deregister file with just one file name with the indexing server
+     *   WatchDir calls this when a file is deleted 
+     */
+    public void deregister(String fileName){
+        fileList.remove(fileName);
+        try {
+            indexStub.deregister(id, fileName);
+        } catch (Exception e) {
+            System.err.println("Client exception: " + e.toString());
+            e.printStackTrace();
+        }
+    }
+
 
     /**
      * Get the list of peers that have a given file
