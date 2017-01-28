@@ -3,7 +3,7 @@ package main.java.peer;
 import main.java.host.IndexInt;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-import java.rmi.server.UnicastRemoteObject;
+//import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
@@ -26,14 +26,14 @@ public class Client {
     public Client(String host) {
 	id = host;
 	try {
-	    PeerInt stub = (PeerInt) UnicastRemoteObject.exportObject(this, 0);
+	    //PeerInt stub = (PeerInt) UnicastRemoteObject.exportObject(this, 0);
 	    Registry thisregistry = LocateRegistry.getRegistry();
 	    Registry remoteregistry = LocateRegistry.getRegistry("10.0.0.1", 1099);
 
 	    indexStub = (IndexInt) remoteregistry.lookup("IndexInt");
 	    // register functions for peer:server
 
-	    thisregistry.rebind("PeerInt", stub);
+	    //thisregistry.rebind("PeerInt", stub);
 	    
 	} catch (Exception e) {
             System.err.println("Client exception: " + e.toString());
@@ -97,7 +97,8 @@ public class Client {
 	    System.out.println("INFO: connecting to "+peerId+" to retrieve file "+fileName);
             Registry registry = LocateRegistry.getRegistry(peerId,1099);
             PeerInt peerStub = (PeerInt) registry.lookup("PeerInt");
-            peerStub.retrieve(fileName, thisStub);
+	    peerStub.retrieve(fileName, thisStub);
+	    
         } catch (Exception e) {
             System.err.println("Client exception: " + e.toString());
             e.printStackTrace();

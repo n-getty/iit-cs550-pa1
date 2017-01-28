@@ -10,12 +10,15 @@ import java.rmi.server.UnicastRemoteObject;
 
 public class PeerImpl implements PeerInt {
 
-    public PeerImpl() {
-        try {
+    String folder;
+    
+    public PeerImpl(String fold) {
+        folder = fold;
+	try {
             PeerInt stub = (PeerInt) UnicastRemoteObject.exportObject(this, 0);
             // Bind the remote object's stub in the registry
             Registry registry = LocateRegistry.getRegistry();
-            registry.bind("PeerInt", stub);
+            registry.rebind("PeerInt", stub);
             System.err.println("PeerImpl ready");
         } catch (Exception e) {
             System.err.println("PeerImpl exception: " + e.toString());
@@ -25,7 +28,7 @@ public class PeerImpl implements PeerInt {
 
     public void retrieve(String fileName, PeerInt client) {
         try {
-            File requestedFile = new File(fileName);
+            File requestedFile = new File(folder+"/"+fileName);
             FileInputStream in = new FileInputStream(requestedFile);
             byte [] mydata = new byte[1024*1024];
             int len = in.read(mydata);
@@ -61,7 +64,7 @@ public class PeerImpl implements PeerInt {
 
     public void sendData(String fileName, byte[] data, int len) {
         try{
-            File file = new File(fileName);
+            File file = new File(folder+"/"+fileName+"ddddd");
             file.createNewFile();
             FileOutputStream out=new FileOutputStream(file,true);
             out.write(data,0,len);

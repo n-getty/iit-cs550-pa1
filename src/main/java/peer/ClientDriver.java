@@ -3,7 +3,7 @@ package main.java.peer;
 import java.util.List;
 import java.util.Scanner;
 
-public class ClientDriver implements PeerInt {
+public class ClientDriver{// implements PeerInt {
 
     public static void main(String[] args) {
 	System.setProperty( "java.rmi.server.hostname", args[0] ) ;
@@ -15,6 +15,8 @@ public class ClientDriver implements PeerInt {
 
         System.out.println("INFO: Initializing Peer...");
         Client peerClient = new Client(args[0]);
+	PeerImpl peerServ = new PeerImpl(folder);
+	
         System.out.println("INFO: Client Process initialized...");
 
         System.out.println("INFO: Registering Files in: ./" + folder + "/");
@@ -23,11 +25,11 @@ public class ClientDriver implements PeerInt {
         System.out.println("INFO: Files Sucessfully Registered... ");
 
         Scanner input = new Scanner(System.in);
-        System.out.println("Input 'exit' to close the application at anytime");
+        System.out.println("\nInput 'exit' to close the application at anytime");
         String query;
 
 	while (true) {
-            System.out.println("Input name of file you want to retrieve:");
+            System.out.println("\nInput name of file you want to retrieve:\n");
             query = input.nextLine();
             if (query.equals("exit")){
                 System.out.println("\nALERT: Process exiting... \n Goodbye.");

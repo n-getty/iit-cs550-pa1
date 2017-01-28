@@ -56,11 +56,13 @@ public class ServerImpl implements IndexInt {
         System.out.println("\nINFO: Press return Key to Exit.\n\n");
         Scanner scanner = new Scanner(System.in);
         String readString = scanner.nextLine();
-        /*
+
+	/*
         System.out.println("INFO: cleaning up...");
         // TODO exit and persistence ???
         System.out.println("INFO: Finished cleaning up\n");
         */
+
         System.out.println("\nALERT: Process exiting...\n Goodbye.");
         System.exit(0);
     }
