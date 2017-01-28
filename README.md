@@ -27,11 +27,14 @@ h1$ rmiregistry &
 h1$ java main.java.host.ServerImpl   
 
 h2$ rmiregistry &   
+h2$ java main.java.peer.WatchDir test1 10.0.0.2 &
 h2$ java main.java.peer.ClientDriver 10.0.0.2 test1  
 
 h3$ rmiregistry &  
+h3$ java main.java.peer.WatchDir test2 10.0.0.3 &
 h3$ java main.java.peer.ClientDriver 10.0.0.3 test2   
 
 h4$ rmiregistry &   
+h4$ java main.java.peer.WatchDir test3 10.0.0.4 &
 h4$ java main.java.peer.ClientDriver 10.0.0.4 test3   
 

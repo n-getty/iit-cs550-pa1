@@ -1,14 +1,9 @@
 package main.java.peer;
 
-
-import java.nio.file.*;
-import static java.nio.file.StandardWatchEventKinds.*;
-import static java.nio.file.LinkOption.*;
-import java.nio.file.attribute.*;
 import java.io.*;
 import java.util.*;//List;
-import java.util.Scanner;
-import main.java.peer.WatchDir;
+//#import java.util.Scanner;
+//#import main.java.peer.WatchDir;
 
 
 public class ClientDriver{// implements PeerInt {
@@ -40,10 +35,12 @@ public class ClientDriver{// implements PeerInt {
 	 *                 when (event kind) = ENTRY_CREATE | ENTRY_DELETE
 	 */
 	
+	/*
 	System.out.println("INFO: Setting up directory watcher ...");
 	Path dir = Paths.get(folder);
 	new WatchDir(dir, false).processEvents();
 	System.out.println("INFO: Directory watcher Successfully set up.");
+	*/
 	
         Scanner input = new Scanner(System.in);
         System.out.println("\nInput 'exit' to close the application at anytime");
