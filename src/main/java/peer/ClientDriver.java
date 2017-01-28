@@ -1,6 +1,7 @@
 package main.java.peer;
 
-import java.util.List;
+import java.io.*;
+import java.util.*;//List;
 import java.util.Scanner;
 
 public class ClientDriver{// implements PeerInt {
@@ -40,7 +41,19 @@ public class ClientDriver{// implements PeerInt {
                 System.out.println("WARNING: No peers for that file\n\ttry a new filename");
             }
 	    else {
-		peerClient.retrieve(query, peers.get(0));
+		String x = peerClient.retrieve(query, peers.get(0));
+		try {
+		    BufferedWriter out = new BufferedWriter(new FileWriter(folder + "/" + query));
+		    out.write(x);
+		    out.close();
+		
+		}
+		catch (IOException e)
+		    {
+			System.out.println("Exception" + e);
+		    }
+		// save file in directory
+		
 	    }
 	}
     }

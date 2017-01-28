@@ -1,12 +1,17 @@
 package main.java.peer;
 import main.java.host.ServerImpl;
 
+import java.nio.file.Files;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.rmi.RemoteException;
+import java.io.*;
+import java.nio.file.Paths;
+
 
 public class PeerImpl implements PeerInt {
 
@@ -32,8 +37,19 @@ public class PeerImpl implements PeerInt {
     /**
      * Pass chunks of the file to the clients remote peer object until the file is written
      */
-    public void retrieve(String fileName, PeerInt client) {
-        try {
+    public String retrieve(String fileName, PeerInt client)
+	throws IOException, RemoteException {
+
+	try {
+	    byte[] requestedFile = Files.readAllBytes(Paths.get(folder+"/"+fileName));
+	    return new String(requestedFile);
+	}
+	catch(Exception e) {
+	    e.printStackTrace();
+	}
+	return "";
+	/*
+	try {
             File requestedFile = new File(folder+"/"+fileName);
             FileInputStream in = new FileInputStream(requestedFile);
             byte [] mydata = new byte[1024*1024];
@@ -46,6 +62,7 @@ public class PeerImpl implements PeerInt {
         catch(Exception e){
             e.printStackTrace();
         }
+	*/
     }
 
     /*
