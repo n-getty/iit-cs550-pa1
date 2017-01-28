@@ -10,18 +10,17 @@ import java.util.Arrays;
 import java.io.File;
 
 public class Client {
-    // TODO
+    // Remote object of indexing server
     IndexInt indexStub;
-    // TODO
+    // ID of this peer
     String id;
-
     // contains the file objects
     List<File> files = new ArrayList<File>();
     // contains the list of file names ( for registering )
     List<String> fileList = new ArrayList<String>();
-
-    // TODO
+    // This objects remote peer object
     PeerInt thisStub;
+
 
     public Client(String host) {
 	id = host;
@@ -51,6 +50,9 @@ public class Client {
         }
     }
 
+    /**
+     * Store all the file names of a given directory
+     */
     public void getFilesToRegister(String folder) {
         // currently we only support files inside of folders (i.e. no folders inside folders)
 
@@ -68,6 +70,9 @@ public class Client {
         }
     }
 
+    /**
+     * Register all files in list with the indexing server
+     */
     public void registerAll(){
 	
 	try {
@@ -81,6 +86,9 @@ public class Client {
         }
     }
 
+    /**
+     * Get the list of peers that have a given file
+     */
     public List<String> lookup(String fileName){
         List targetIds = null;
         try {
@@ -92,9 +100,13 @@ public class Client {
         return targetIds;
     }
 
+    /**
+     * Retrieve a file from a given peer by passing this objects remote peer object for data transfer
+     */
     public void retrieve(String fileName, String peerId){
         try {
 	    System.out.println("INFO: connecting to "+peerId+" to retrieve file "+fileName);
+	        // Get the remote object for the given peer
             Registry registry = LocateRegistry.getRegistry(peerId,1099);
             PeerInt peerStub = (PeerInt) registry.lookup("PeerInt");
 	    peerStub.retrieve(fileName, thisStub);

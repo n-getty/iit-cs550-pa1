@@ -12,9 +12,12 @@ public class PeerImpl implements PeerInt {
 
     String folder;
     
+    /**
+     * Constructor for exporting each peer to the registry
+     */
     public PeerImpl(String fold) {
         folder = fold;
-	try {
+        try {
             PeerInt stub = (PeerInt) UnicastRemoteObject.exportObject(this, 0);
             // Bind the remote object's stub in the registry
             Registry registry = LocateRegistry.getRegistry();
@@ -26,6 +29,9 @@ public class PeerImpl implements PeerInt {
         }
     }
 
+    /**
+     * Pass chunks of the file to the clients remote peer object until the file is written
+     */
     public void retrieve(String fileName, PeerInt client) {
         try {
             File requestedFile = new File(folder+"/"+fileName);
@@ -62,9 +68,12 @@ public class PeerImpl implements PeerInt {
     }
     //*/
 
+    /**
+     * Write the file to disk using the clients peer object
+     */
     public void sendData(String fileName, byte[] data, int len) {
         try{
-            File file = new File(folder+"/"+fileName+"ddddd");
+            File file = new File(folder+"/"+fileName);
             file.createNewFile();
             FileOutputStream out=new FileOutputStream(file,true);
             out.write(data,0,len);
