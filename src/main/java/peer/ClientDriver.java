@@ -58,9 +58,9 @@ public class ClientDriver{// implements PeerInt {
                 System.out.println("WARNING: No peers for that file\n\ttry a new filename");
             }
 	    else {
-		String x = peerClient.retrieve(query, peers.get(0));
+		byte[] x = peerClient.retrieve(query, peers.get(0));
 		try {
-		    BufferedWriter out = new BufferedWriter(new FileWriter(folder + "/" + query));
+		    FileOutputStream out = new FileOutputStream(new File(folder + "/" + query));
 		    out.write(x);
 		    out.close();
 		

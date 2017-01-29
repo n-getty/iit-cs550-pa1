@@ -20,8 +20,8 @@ make
 
 
 # Running  
-sudo mn --topo=single,4  
-mininet$ xterm h1 h2 h3 h4  
+sudo mn --topo=single,5  
+mininet$ xterm h1 h2 h3 h4 h5 
 
 h1$ rmiregistry &  
 h1$ java main.java.host.ServerImpl   
@@ -37,4 +37,8 @@ h3$ java main.java.peer.ClientDriver 10.0.0.3 test2
 h4$ rmiregistry &   
 h4$ java main.java.peer.WatchDir test3 10.0.0.4 &
 h4$ java main.java.peer.ClientDriver 10.0.0.4 test3   
+
+h5$ rmiregistry &   
+h5$ java main.java.peer.WatchDir test3 10.0.0.5 &
+h5$ java main.java.peer.ClientDriver 10.0.0.5 test4   
 

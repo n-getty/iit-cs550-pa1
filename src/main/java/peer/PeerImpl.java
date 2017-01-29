@@ -37,17 +37,18 @@ public class PeerImpl implements PeerInt {
     /**
      * Pass chunks of the file to the clients remote peer object until the file is written
      */
-    public String retrieve(String fileName, PeerInt client)
+    public byte[] retrieve(String fileName, PeerInt client)
 	throws IOException, RemoteException {
 
 	try {
 	    byte[] requestedFile = Files.readAllBytes(Paths.get(folder+"/"+fileName));
-	    return new String(requestedFile);
+	    return requestedFile;
 	}
 	catch(Exception e) {
 	    e.printStackTrace();
 	}
-	return "";
+	byte[] x = "x".getBytes();
+	return x;
 	/*
 	try {
             File requestedFile = new File(folder+"/"+fileName);

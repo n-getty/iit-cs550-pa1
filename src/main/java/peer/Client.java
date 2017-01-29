@@ -123,7 +123,7 @@ public class Client {
     /**
      * Retrieve a file from a given peer by passing this objects remote peer object for data transfer
      */
-    public String retrieve(String fileName, String peerId){
+    public byte[] retrieve(String fileName, String peerId){
         try {
 	    System.out.println("INFO: connecting to "+peerId+" to retrieve file "+fileName);
 	        // Get the remote object for the given peer
@@ -135,6 +135,7 @@ public class Client {
             System.err.println("Client exception: " + e.toString());
             e.printStackTrace();
         }
-	return "";
+	byte[] x = "x".getBytes();
+	return x;
     }
 }
