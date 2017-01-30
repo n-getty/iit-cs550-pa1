@@ -7,6 +7,5 @@ import java.io.*;
  * Interface for peer data transfer methods
  */
 public interface PeerInt extends Remote {
-    byte[] retrieve(String fileName, PeerInt client) throws RemoteException, IOException;
-    void sendData(String fileName, byte[] data, int len) throws RemoteException;
+    byte[] retrieve(String fileName) throws RemoteException, IOException;
 }

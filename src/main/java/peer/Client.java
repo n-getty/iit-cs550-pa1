@@ -3,7 +3,6 @@ package main.java.peer;
 import main.java.host.IndexInt;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-//import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
@@ -125,7 +124,7 @@ public class Client {
     }
 
     /**
-     * Retrieve a file from a given peer by passing this objects remote peer object for data transfer
+     * Retrieve a file from a given peer
      */
     public byte[] retrieve(String fileName, String peerId){
         try {
@@ -133,7 +132,7 @@ public class Client {
 	        // Get the remote object for the given peer
             Registry registry = LocateRegistry.getRegistry(peerId,1099);
             PeerInt peerStub = (PeerInt) registry.lookup("PeerInt");
-	    return peerStub.retrieve(fileName, thisStub);
+	    return peerStub.retrieve(fileName);
 	    
         } catch (Exception e) {
             System.err.println("Client exception: " + e.toString());
