@@ -39,6 +39,31 @@ public class ClientDriver{// implements PeerInt {
         System.out.println("\nInput 'exit' to close the application at anytime");
         String query;
 
+	long old_time = 0;
+	long time = System.nanoTime();
+
+	if (args.length > 2) {
+		
+		for(int i=0;i<1000;i++) {
+		    List<String> peers = peerClient.lookup("file10.txt");
+		    byte[] x = peerClient.retrieve("file10.txt", peers.get(0));
+		    try {
+			FileOutputStream out = new FileOutputStream(new File(folder + "/" + "file10_"+i+".txt"));
+			out.write(x);
+			out.close();
+		    }
+		    catch (IOException e)
+			{
+			    System.out.println("Exception" + e);
+			}
+		    old_time = time;
+		    time = System.nanoTime();
+		    System.out.println(time - old_time);
+		}
+		System.exit(0);
+	}
+	
+	
 	while (true) {
             System.out.println("\nInput name of file you want to retrieve:\n");
             query = input.nextLine();
