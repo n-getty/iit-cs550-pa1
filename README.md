@@ -1,7 +1,16 @@
 # iit-cs550-pa1
 Advanced Operating Systems programming assignment 1
+Neil Getty & Christopher Hannon
 
+# Requried turn in materials:
 
+1: Output file  -- ./docs/testcase/howto.pdf
+2: Design Doc -- ./docs/design_doc/design.pdf
+3: Source Code -- ./src/main/*
+4: Manual -- ./docs/manual/index.html
+5: Verification -- ./docs/testcase/howto.pdf
+
+# Setup
 To get environment set up:
 
 virtualbox with ubuntu 16.04
