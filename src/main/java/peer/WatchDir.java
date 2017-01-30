@@ -1,8 +1,9 @@
 /*   This file is from oracle
  *       copyright oracle 
  *       all rights reserved
- *    TODO: 
- *       add link to web page
+ *       
+ *   https://docs.oracle.com/javase/tutorial/essential/io/notification.html
+ *       
  */
 
 package main.java.peer;
