@@ -27,7 +27,6 @@ public class Client {
 	id = host;
 	try {
 	    Registry remoteregistry = LocateRegistry.getRegistry("10.0.0.1", 1099);
-
 	    indexStub = (IndexInt) remoteregistry.lookup("IndexInt");
 	    // register functions for peer:server
 	    
