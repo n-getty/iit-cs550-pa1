@@ -21,21 +21,15 @@ public class Client {
     List<File> files = new ArrayList<File>();
     // contains the list of file names ( for registering )
     List<String> fileList = new ArrayList<String>();
-    // This objects remote peer object
-    PeerInt thisStub;
 
 
     public Client(String host) {
 	id = host;
 	try {
-	    //PeerInt stub = (PeerInt) UnicastRemoteObject.exportObject(this, 0);
-	    Registry thisregistry = LocateRegistry.getRegistry();
 	    Registry remoteregistry = LocateRegistry.getRegistry("10.0.0.1", 1099);
 
 	    indexStub = (IndexInt) remoteregistry.lookup("IndexInt");
 	    // register functions for peer:server
-
-	    //thisregistry.rebind("PeerInt", stub);
 	    
 	} catch (Exception e) {
             System.err.println("Client exception: " + e.toString());

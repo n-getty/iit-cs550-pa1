@@ -38,15 +38,15 @@ public class PeerImpl implements PeerInt {
     public byte[] retrieve(String fileName)
 	throws IOException, RemoteException {
 
-	try {
-	    byte[] requestedFile = Files.readAllBytes(Paths.get(folder+"/"+fileName));
-	    return requestedFile;
-	}
-	catch(Exception e) {
-	    e.printStackTrace();
-	}
-	byte[] x = "x".getBytes();
-	return x;
+        try {
+            byte[] requestedFile = Files.readAllBytes(Paths.get(folder+"/"+fileName));
+            return requestedFile;
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+        byte[] x = "x".getBytes();
+        return x;
     }
 
 }
