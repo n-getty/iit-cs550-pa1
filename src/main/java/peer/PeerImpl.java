@@ -12,7 +12,9 @@ import java.rmi.RemoteException;
 import java.io.*;
 import java.nio.file.Paths;
 
-
+/**
+ * Server part of the Peer
+ */
 public class PeerImpl implements PeerInt {
 
     String folder;
@@ -49,21 +51,6 @@ public class PeerImpl implements PeerInt {
 	}
 	byte[] x = "x".getBytes();
 	return x;
-	/*
-	try {
-            File requestedFile = new File(folder+"/"+fileName);
-            FileInputStream in = new FileInputStream(requestedFile);
-            byte [] mydata = new byte[1024*1024];
-            int len = in.read(mydata);
-            while(len>0){
-                client.sendData(fileName, mydata, len);
-                len = in.read(mydata);
-            }
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
-	*/
     }
 
     /**

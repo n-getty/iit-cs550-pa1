@@ -9,6 +9,10 @@ import java.util.List;
 import java.util.Arrays;
 import java.io.File;
 
+
+/**
+ * Client class creates client to index server 
+ */
 public class Client {
     // Remote object of indexing server
     IndexInt indexStub;

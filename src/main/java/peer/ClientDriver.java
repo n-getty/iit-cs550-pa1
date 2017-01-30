@@ -6,8 +6,14 @@ import java.util.*;//List;
 //#import main.java.peer.WatchDir;
 
 
+/**
+ * Client Driver is the main program on the peer to retrieve and return files
+ */
 public class ClientDriver{// implements PeerInt {
-
+    /**
+     * Main function creates client to server, and initiates peer server
+     * Input is IP address of host and the directory that the peer will share and download to
+     */
     public static void main(String[] args)
 	throws IOException {
 	
@@ -29,19 +35,6 @@ public class ClientDriver{// implements PeerInt {
         peerClient.registerAll();
         System.out.println("INFO: Files Sucessfully Registered... ");
 
-	/* the watch file is blocking
-	 *    TODO create thread to monitor directory
-	 *    TODO modify WatchDir to call register / unregister 
-	 *                 when (event kind) = ENTRY_CREATE | ENTRY_DELETE
-	 */
-	
-	/*
-	System.out.println("INFO: Setting up directory watcher ...");
-	Path dir = Paths.get(folder);
-	new WatchDir(dir, false).processEvents();
-	System.out.println("INFO: Directory watcher Successfully set up.");
-	*/
-	
         Scanner input = new Scanner(System.in);
         System.out.println("\nInput 'exit' to close the application at anytime");
         String query;

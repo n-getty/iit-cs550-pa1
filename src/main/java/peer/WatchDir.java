@@ -15,7 +15,7 @@ import java.io.*;
 import java.util.*;
 
 /**
- * Example to watch a directory (or tree) for changes to files.
+ * Watches a directory (or tree) for changes to files. Taken from oracle documents and modified to register files to the index server
  */
 
 public class WatchDir {
